@@ -85,3 +85,52 @@ $$Thus, **P(Sick \mid Pos) = 0.0196**$$
 <img width="672" alt="Screenshot 2024-03-01 at 10 32 19" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/17a51d07-db8b-442d-a89f-17957c758f76">
 
 
+## Relationship Between Variables
+
+- **Causality**: Relationship between two events where one event is affected by the other.
+- **Correlation:** Measure the relationship between two variables and ranges from -1 to 1, **the normalized version of covariance**.
+- **Covariance:** A quantitative measure of the joint variability between two or more variables.
+  $$Cov(X, Y) = \frac{1}{n}\sum_{i=1}^{n}(X_i - \bar{X})(Y_i - \bar{Y})$$
+  $$Cor(X, Y) = \frac{Cov(X, Y)}{\sqrt{Var(X)Var(Y)}}$$
+  $$Var(X)=Cov(X,X)$$
+
+  
+<img width="647" alt="Screenshot 2024-03-02 at 12 33 31" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/8ef04e8f-28fe-4f37-b50c-5d8081fdad39">
+
+## Continuous Probability Distribution
+
+- **Normal Distribution**: $f(x) = (2\pi\sigma^2)^{-1/2}e^{-(x-\mu)^2/2\sigma^2}$, $E[X] = \mu$, $Var(X) = \sigma^2$
+- **The Central Limit Theorem (CLT)**: the distribution of **average of iid variables** (properly normalized) becomes that of a standard normal as the sample size increases (**n > 30**)
+
+## Discrete Probability Distribution
+
+* **The Bernoulli distribution**: $P(X = x) = p^x(1-p)^{1-x}$, $E[X] = p$, $Var(X) = p(1-p)$
+
+* **The Binomial Mass Function**: $P(X = x) = \binom{n}{x}p^x(1-p)^{n-x}$, $E[X] = np$, $Var(X) = np(1-p)$
+
+<img width="712" alt="Screenshot 2024-03-02 at 12 53 25" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/79a3501e-2041-40da-9d0f-16c6aa75b626">
+
+<img width="643" alt="Screenshot 2024-03-02 at 12 57 04" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/89b5d24d-e4b0-466e-96f6-9fe35286d1e7">
+
+
+* **The Geometric Distribution**: 需要几次Bernoulli Trails才能成功一次的Probability Distribution， $E[X] = 1/p$, $Var(X) = q/p^2$
+  
+<img width="641" alt="Screenshot 2024-03-02 at 13 02 33" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/b4ffb2b4-81ec-4ff4-977c-52b57517e3d0">
+
+
+<img width="537" alt="Screenshot 2024-03-02 at 13 09 14" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/031bd9de-46a0-4006-9f2b-5a8e6044bbb4">
+
+  - Solution:
+    - Normal Distribution: 68 - 95 - 99.7
+    - Geometric Distribution
+    - P(X = 拿到大于2的可能性)= 0.025
+    - P(X = 拿到小于2的可能性)= 0.975
+    - E[X] = 1 / p = 1 / 0.025 = 40
+
+* **The Poisson distribution**:  $P(X = x; \lambda) = \frac{\lambda^xe^{-\lambda}}{x!}$, $E[X] = \lambda$, $Var(X) = \lambda$
+
+
+<img width="648" alt="Screenshot 2024-03-02 at 13 21 18" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/7d3e5e1d-6ccf-4da6-b7e9-bb7522631bed">
+
+
+<img width="719" alt="Screenshot 2024-03-02 at 13 31 58" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/c2dea28c-2b70-41be-a472-a8a5f34394ba">
