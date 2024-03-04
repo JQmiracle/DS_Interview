@@ -134,3 +134,19 @@ $$Thus, **P(Sick \mid Pos) = 0.0196**$$
 
 
 <img width="719" alt="Screenshot 2024-03-02 at 13 31 58" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/c2dea28c-2b70-41be-a472-a8a5f34394ba">
+
+
+
+## Interview Questions
+<img width="909" alt="Screenshot 2024-03-04 at 11 01 35" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/2fe1ce13-6702-41c8-91b8-3f327ec2a0d9">
+
+- Binomial Distribution:
+    1. Each trail is Bernoulli
+    2. Each trail is independent
+    3. P(success) is 5% for each trail
+- Normal Approximation for Binomial Distribution:
+    1. n >= 30
+    2. np >= 5
+    3. nq = n(1-p) >= 5
+ 
+
