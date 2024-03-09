@@ -63,8 +63,26 @@
 
 <img width="695" alt="Screenshot 2024-03-04 at 13 09 43" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/30036e19-c3a4-4e47-bd3d-0fd78586b2a6">
 
-  
+
+## Confusion Matrix
+
+  <img width="695" alt="Screenshot 2024-03-09 at 11 00 41" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/00534070-2274-4623-bf42-1bac5c6513d1">
 
 
 ## Z test
+
+* The $Z$ test for $H_0: \mu=\mu_0$ versus $H_1: \mu<\mu_0$, $H_2: \mu \neq \mu_0$, $H_3: \mu>\mu_0$
+* Test statistic: $TS=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}$
+* Reject the null hypothesis when: $TS \leq Z_\alpha = -Z_{1-\alpha}$,  $|TS| \geq Z_{1-\alpha/2}$,  $TS \geq Z_{1-\alpha}$
+
+### Interview Questions
+
+<img width="739" alt="Screenshot 2024-03-09 at 11 10 02" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/4f434048-bfd8-4b90-92b3-a5fef343953e">
+
+<img width="729" alt="Screenshot 2024-03-09 at 11 08 37" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/a2dd349a-a332-4b93-b001-250ef2ca5133">
+
+
+
+
+
 ## T test
