@@ -67,12 +67,18 @@
 ## Confusion Matrix
 
   <img width="695" alt="Screenshot 2024-03-09 at 11 00 41" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/00534070-2274-4623-bf42-1bac5c6513d1">
+<img width="636" alt="Screenshot 2024-03-09 at 11 52 06" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/20ed2fa9-9151-4ba9-8750-7b453738d988">
+
+  
+
+  * Recall = TP / (TP + FN) 越大， Type II Error 越小
+  * Precision = TP / (TP + FP) 越大， Type I Error 越小
 
 
 ## Z test
 
 * The $Z$ test for $H_0: \mu=\mu_0$ versus $H_1: \mu<\mu_0$, $H_2: \mu \neq \mu_0$, $H_3: \mu>\mu_0$
-* Test statistic: $TS=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}$
+* Test statistic: $TS=\frac{\bar{X}-\mu_0}{\sigma/\sqrt{n}}$
 * Reject the null hypothesis when: $TS \leq Z_\alpha = -Z_{1-\alpha}$,  $|TS| \geq Z_{1-\alpha/2}$,  $TS \geq Z_{1-\alpha}$
 
 ### Interview Questions
@@ -82,7 +88,22 @@
 <img width="729" alt="Screenshot 2024-03-09 at 11 08 37" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/a2dd349a-a332-4b93-b001-250ef2ca5133">
 
 
+<img width="681" alt="Screenshot 2024-03-09 at 11 24 56" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/47c341d2-ef13-4242-8161-a3ae322d32a5">
 
+<img width="674" alt="Screenshot 2024-03-09 at 11 25 35" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/ee724c48-efee-42a6-9544-b2037f94880b">
+
+<img width="722" alt="Screenshot 2024-03-09 at 11 26 34" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/4268c7ef-8c91-491e-b552-3edbbadb1523">
 
 
 ## T test
+
+* Test statistic: $TS=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}$
+* S: 样本的std。但是，Z test的$\sigma$是代表总体的std，可以用估算（当n>=30）
+
+<img width="686" alt="Screenshot 2024-03-09 at 11 32 05" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/aeb09cbd-94e4-499a-ad72-a00ef852496d">
+
+
+### Interview Questions
+
+<img width="629" alt="Screenshot 2024-03-09 at 11 46 12" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/b6055c78-63d8-43df-8908-d59b5bc7a655">
+
