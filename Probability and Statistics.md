@@ -9,6 +9,7 @@
  **$$E[X] = \sum_{x \in X}xP(X)$$**
 * **Variance** quantifies the **spread** of that random variable's distribution. The variance is the average value of the squared difference between the random variable and its expectation. (**Ex. Investor -- high  risk --> high return --> high variance**)
  **$$Var[X] = E[(X - E[X])^2]$$**
+  $$Var(X) = E[(X - \mu)^2] = E[X^2] - E[X]^2$$
 
 ## Conditional Probability 
 $$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$
