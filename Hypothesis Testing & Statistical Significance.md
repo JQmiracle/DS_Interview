@@ -98,7 +98,7 @@
 ## T test
 
 * Test statistic: $TS=\frac{\bar{X}-\mu_0}{S/\sqrt{n}}$
-* S: 样本的std。但是，Z test的$\sigma$是代表总体的std，可以用估算（当n>=30）
+* S: 样本的std。但是，Z test的 $\sigma$ 是代表总体的std，可以用估算（当n>=30）
 
 <img width="686" alt="Screenshot 2024-03-09 at 11 32 05" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/aeb09cbd-94e4-499a-ad72-a00ef852496d">
 
