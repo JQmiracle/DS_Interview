@@ -38,7 +38,7 @@ $$P(Not Sick) =  1 - 1 / 1000 = 0.999$$
 
 $$P(Pos \mid Sick) = 0.99$$
 
-$$P(Pos \mid Sick) = 0.05$$
+$$P(Pos \mid Not Sick) = 0.05$$
 
 $$Thus, **P(Sick \mid Pos) = 0.0196**$$
 
