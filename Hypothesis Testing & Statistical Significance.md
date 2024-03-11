@@ -59,6 +59,7 @@
   - Standard deviation of the metrics --> decrease the std --> increase the power
   - Sample Size --> increase N --> decrease the std --> increase the power
   - Significance level (alpha) --> increase $\alpha$ --> decrease $\beta$ --> increase the power
+  - alpha 与 beta 相反的趋势 （alpha 增大 beta 减少）
   - **Increase sample size --> decrease both $\alpha$ and $\beta$**
  
 
