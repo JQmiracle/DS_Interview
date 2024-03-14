@@ -116,6 +116,27 @@ Slides: https://github.com/bcaffo/courses/tree/master/08_PracticalMachineLearnin
 
 
 
+### **2. Logistic Regression Concept**
+
+- Logit Function: $\ln(\frac{p(x)}{1-p(x)}) = \beta_{0} + \beta_{1}X_{1} + ... + \beta_{N}X_{N}$
+- Odds Ratio = $\frac{p}{1-p}$ = $\frac{p}{q}$
+- Log Odds Ratio : $X_{1}$ increases by 1 unit, $\ln(\frac{p}{1-p})$ increases by $\beta_{1}$
+- Compare two variables: $\frac{e^{\beta_{1}}}{e^{\beta_{2}}} = \{e^{\beta_{1} - \beta_{2}}}$
+- 人为设置threshold, 因为output是probability。
+
+<img width="1050" alt="Screenshot 2024-03-13 at 16 34 32" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/6ad2b645-7f88-448e-a176-a63857768245">
+
+<img width="1228" alt="Screenshot 2024-03-13 at 16 35 08" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/a810d721-7790-4f32-841c-94987b6ce74f">
+
+
+<img width="1001" alt="Screenshot 2024-03-13 at 16 46 19" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/b6cc5958-ad5a-438b-aa2e-a1604d7ace4a">
+
+
+<img width="999" alt="Screenshot 2024-03-13 at 16 50 02" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/1d3b8faf-b19b-4b50-a5fb-d27652ddf08f">
+
+
+
+
 
 
 ## Predicting with trees
@@ -124,15 +145,30 @@ Slides: https://github.com/bcaffo/courses/tree/master/08_PracticalMachineLearnin
 
 * Without pruning/cross-validation can lead to overfitting, Harder to estimate uncertainty, and Results may be variable
 
-* Basic algorithm: Start with all variables in one group -> Find the variables/split that best separates the outcomes -> Divide the data into two groups ("leaves") on that split ("node") -> Within each split, find the best variable/split that separates the outcomes -> Continue until the groups are too small or sufficiently "pure"
+* **Basic algorithm**:
+  * Start with all variables in one group
+  * Find the variables/split that best separates the outcomes
+  * Divide the data into two groups ("leaves") on that split ("node")
+  * Within each split, find the best variable/split that separates the outcomes
+  * Continue until the groups are too small or sufficiently "pure"
+
+* **Minimize Entropy == Increase Information Gain**
 
 * Measures of impurity: $\hat{p_{mk}}=\frac{1}{N_m}\sum_{x_i in Leaf m} 1(y_i=k)$
 
 * Misclassification error: $1-\hat{p_{mk}};k(m)=most;common;k$
 
-* Gini index: $1 - \sum_k \hat{p_{mk}}^2$
+* **Gini index**: $1 - \sum_k \hat{p_{mk}}^2$ ( **The lower the Gini Index, the better the lower the likelihood of misclassification**.)
 
-* Deviance/information gain: $-\sum_k \hat{p_{mk}} log_2\hat{p_{mk}}$
+* Entropy =  $-\sum_k \hat{p_{mk}} log_2\hat{p_{mk}}$
+
+* Information gain = Entropy(Parent) - Entropy(Children)
+
+
+<img width="1307" alt="Screenshot 2024-03-13 at 17 08 52" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/96ab51b1-1b69-4da5-85f9-67ce49a1c62c">
+
+
+
 
 ## Bagging
 
@@ -154,7 +190,7 @@ Slides: https://github.com/bcaffo/courses/tree/master/08_PracticalMachineLearnin
 
 * Start with a set of classifiers $h_1, ..., h_k$ and Create a classifier that combines classification functions: $f(x)=sgn(\sum_t \alpha_t h_t(x))$
 
-* Goal is tto minimize error (on training set): Iteratively select one $h$ at each step, Calculate weights based on errors, and Upweight missed calssfications and select next $h$
+* Goal is to minimize error (on training set): Iteratively select one $h$ at each step, Calculate weights based on errors, and Upweight missed classifications and select next $h$
 
 * One large subclass is gradient boosting
 
@@ -197,3 +233,43 @@ Slides: https://github.com/bcaffo/courses/tree/master/08_PracticalMachineLearnin
 * Seasonal: When there is a pattern over a fixed period of time that recurs 
 
 * Cyclic: When data rises and falls over non fixed periods
+
+
+### Interview Questions:
+<img width="1190" alt="Screenshot 2024-03-13 at 17 24 36" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/f3ceae19-681d-48d8-bb34-653d18d36e0e">
+
+- **Cost of False Positive is Higher**: 公司招聘一个不合格的人，最后公司需要大量人力物力去解雇
+
+- **Cost of False Negative is Higher**: 预测一个人得了癌症，但是没被检测出来，最后没得到治疗，对病人生命危害很大
+
+<img width="1048" alt="Screenshot 2024-03-13 at 17 48 42" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/9d8f4bb5-91e1-472b-ba09-a0814a465db9">
+
+- **Metric 选择： False Positive vs. False Negative**
+  - False Positive rate (Type 1 Error = Alpha): Not Fraud 预测成 Fraud --> 用户可能麻烦一些登陆 --> 影响一部分用户的用户体验
+  - **False Negative rate (Type 2 Error = Beta)**: Fraud 预测成 Not Fraud --> 继续产生 new Fraud --> 更大损失
+- **Drawbacks of using supervised machine learning model:**
+  - **Imbalanced dataset** --> the classifier always predicts the one label (把Not Fraud 预测成 Fraud) --> need to upsampling or downsampling
+  - **Training on the history dataset** --> One step behind the new data --> 很难通过historical data去detect new fraud
+  - **Current Industry Method:** **Anomaly Detection** (和 ML 不同) --> 罗列feature --> 看看那些用户feature处于outlier之上
+  - **New Idea:**
+    - Step 1: Supervised ML --> First Fraud Detection
+    - Step 2: Anomaly (Not Fraud from Supervised ML) --> Second Fraud Detection
+
+
+<img width="1166" alt="Screenshot 2024-03-13 at 18 12 53" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/d3da740d-89f4-4d0c-bcab-79d23429ad9b">
+
+ 
+- **Customer Satisfaction** is too general and hard to quantify. Assumption: Increase the customer safisfication rate --> increase retention rate --> decrease churned rate --> increase the lifetime value + potential revenue
+- **Main Goal**: Customer 那些**Feature**是一个很强的signal代表他们满意或者不满意，改善Feature基于Feature Importance，改善客户体验，更少的Say No
+- **Regression vs. Classification:**
+  - Logit Regression:
+    - Benefits: 不占公司算力 --> 很快出结果；正确率不重要，更重要的是理解Feature Importance
+    - Drawbacks: 学习能力有限 --> 需要大量的Feature Engineering
+  - **如果选择Logit Regression，你觉得需要哪些feature**
+    - Behavior Data（**更重要**）：Purchase History、Call Time(Midnight-->情绪崩溃), Date（weekend vs. weekday), Call Duration
+    - Demographic Data：国籍、性别、年龄、职业、locaiton、用了多久服务
+    - **Analysis**：
+      - Purchase History：if 某个具体的brand或者category出现问题 --> customer satisfication becomes lower -->判断出这类商品出问题
+      - Call Duration：if call duration 越长  --> customer satisfaction becomes higher --> 越容易Say Yes -->判断出customer service team 需要更多培训，回答更多问题
+
+    
