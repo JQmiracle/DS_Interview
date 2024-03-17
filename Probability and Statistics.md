@@ -102,6 +102,13 @@ $$Thus, **P(Sick \mid Pos) = 0.0196**$$
 
 - **Normal Distribution**: $f(x) = (2\pi\sigma^2)^{-1/2}e^{-(x-\mu)^2/2\sigma^2}$, $E[X] = \mu$, $Var(X) = \sigma^2$
 - **The Central Limit Theorem (CLT)**: the distribution of **average of iid variables** (properly normalized) becomes that of a standard normal as the sample size increases (**n > 30**)
+- **Law of Large Numbers：** The average of the results obtained from a large number of **independent and identical random** samples converges to the true value, if it exists
+
+  ![image](https://github.com/JQmiracle/DS_Interview/assets/87022634/8cf488cf-bafe-426f-81c0-b2da8173ca5a)
+
+  ![image](https://github.com/JQmiracle/DS_Interview/assets/87022634/462d8a7e-aeb1-4454-8326-612a6302e8e8)
+
+
 
 ## Discrete Probability Distribution
 
