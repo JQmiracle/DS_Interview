@@ -1,4 +1,4 @@
-# Living Coding (Algorithm)
+# Python Interview
 
 ## 1. Find Maximum and Minimum Number
 
