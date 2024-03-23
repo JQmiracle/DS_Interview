@@ -118,14 +118,26 @@
 <img width="651" alt="Screenshot 2024-03-22 at 16 49 14" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/82476008-284e-4215-bae9-c15efa10161d">
 
 ## Exposure Plan （How long should the experiment run?）
-- Estimate sample size
-- How many users you have per day in each group
-- Seasonality (>=2 weeks)
-  - 7, 14, 21...
-  - 周中、周末不同表现
-- **Novelty Effect:**
-  - 新鲜感，前几天很热情 --> 前期出现feature 显著变化 --> **需要谨慎** --> 等待一段时间后再判断
-- **Gradually Launch**
-  - 1% -> 10% -> 50% (one group)
-  - 2% -> 20% -> 100% (two groups)
+- **Launch Plan**
+  - Estimate sample size
+  - How many users you have per day in each group
+  - Seasonality (>=2 weeks)
+    - 7, 14, 21...
+    - 周中、周末不同表现
+  - **Novelty Effect:**
+    - 新鲜感，前几天很热情 --> 前期出现feature 显著变化 --> **需要谨慎** --> 等待一段时间后再判断
+  - **Gradually Launch**
+    - 1% -> 10% -> 50% (one group)
+    - 2% -> 20% -> 100% (two groups)
+<img width="1227" alt="Screenshot 2024-03-22 at 17 06 29" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/5730a130-0ad5-4da5-805d-0337d4ba5dbc">
+<img width="623" alt="Screenshot 2024-03-22 at 17 07 00" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/5428a1c9-0403-49c9-b21f-404055ee5ab9">
 
+- **Monitor Plan**
+  - Novelty Effect
+  - Peeking can be a problem
+    - 如果连续看10天，至少一次出现False Positive的概率是 $1 - (1-0.05)^(10) = 40%$
+    - 这个概率很高，不能马上上线，不要因为一天positive就认为positive，要看到一个非常stable trend，每一天都是positive-->才决定是不是上线
+  - Need to monitor for concerning changes
+    - 假设new feature launch，但是发现第二天time spent下降10%，**需要立马pause**，尽管这个可能是个假的signal
+    - 分析：measure有问题 还是 实验真的造成negative impact
+ 
