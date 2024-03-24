@@ -277,7 +277,7 @@
 ## Interview Questions
 <img width="1064" alt="Screenshot 2024-03-23 at 16 55 18" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/3b5f1540-e14c-4362-9009-eabbe18a594e">
 
-#### 1. There are two experiments, and we want to test 3 versions of algo A, B, C. Two options, **The first experiment** A vs B and use the winner to test C again. **The second experiment** is to compare A, B, and C together. **Which one do you propose and why?**
+### 1. There are two experiments, and we want to test 3 versions of algo A, B, C. Two options, **The first experiment** A vs B and use the winner to test C again. **The second experiment** is to compare A, B, and C together. **Which one do you propose and why?**
 
 **Solution:**
 - **Clarification Questions**: A(Red), B(Blue), C(Current Version)
@@ -297,13 +297,55 @@
   
 
 
-#### 2.Pinterest Product Analyst Experiment
+### 2.Pinterest Product Analyst Experiment
 <img width="986" alt="Screenshot 2024-03-23 at 17 18 20" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/ccf88798-a3c1-4164-a913-33143418de90">
 
 - **Why do we need to do this AB Testing?????** -> First question to clarify
   - Goal: 提升search的experience + 更多的下载图片 
-- **what metrics would you like to measure?**
-  - 
+- **What metrics would you like to measure?**
+  - **Topline**
+    - 下载率
+    - Click Through Rate （从检索页面 --> 原网站） 
+  - **Tracking**：
+    - Time Spent
+  - **Counter**
+    - 空搜率 （%Empty Result Rate） 
+ - **What's your unit of randomization and why?**
+   - user_id --> 确保user experience一致
+ - **How long do you want to run the experiment?**
+   - Estimate sample size 总数 （Alpha，Beta，Min Detectable Effect， Variance）
+   - Daily Traffic in each group and what % could be used for the experiment
+   - Seasonality (**>=2 weeks**)
+     - 7, 14, 21... （**12 天 round up to 14天**）
+     - 周中、周末不同表现
+   - Novelty Effect:
+     - 新鲜感，前几天很热情 --> 前期出现feature 显著变化 --> 需要谨慎 --> 等待一段时间后再判断
+     - 可能会需要延长experiment，如果出现Novelty Effect （**5天时间太短->容易出现Novelty Effect->14天去除Novelty Effect**）
+   - Gradually Launch
+     - 1% -> 10% -> 50% (one group)
+     - 2% -> 20% -> 100% (two groups)
+     - **如果一次性launch test for 50% user and roll back，这50% users 用户体验很差**
+     - 所以保险起见，1% -> 10% -> 50% for one group
+    
+- **When do you decide whether the user gets assigned to the treatment group or control group?**
+  - Splitting point
+  - **Clarification Questions**:
+    -  Camera Button 出现的时间
+      -  假设一点开页面开就能看到button or not
+      -  假设点开搜索框才能看见button or not
+      -   *决定在哪里split based on hypothesis**
+- **If you can run the experiment for two weeks with 5% of traffic in treatment or run the experiment for one week with 10% of traffic in treatment, which one would you choose?**
+  - Sample size 一样大 for two options
+  - Novelty Effect appears if run one week
+  - Externality effect appear if run two week
+  - **However, the Novelty Effect could have more impact on the experiment**
+  - **We choose two weeks!!!**
+
+
+
+
+
+
 
 
       
