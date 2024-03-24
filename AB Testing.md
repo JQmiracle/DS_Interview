@@ -298,7 +298,8 @@
 
 
 ### 2.Pinterest Product Analyst Experiment
-<img width="986" alt="Screenshot 2024-03-23 at 17 18 20" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/ccf88798-a3c1-4164-a913-33143418de90">
+
+<img width="1036" alt="Screenshot 2024-03-24 at 13 00 34" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/15618c25-154c-4173-a621-60fa2494def4">
 
 - **Why do we need to do this AB Testing?????** -> First question to clarify
   - Goal: 提升search的experience + 更多的下载图片 
