@@ -135,9 +135,175 @@
 - **Monitor Plan**
   - Novelty Effect
   - Peeking can be a problem
-    - 如果连续看10天，至少一次出现False Positive的概率是 $1 - (1-0.05)^(10) = 40%$
+    - 如果连续看result10天，至少一次出现False Positive的概率是 $1 - (1-0.05)^(10) = 40%$
     - 这个概率很高，不能马上上线，不要因为一天positive就认为positive，要看到一个非常stable trend，每一天都是positive-->才决定是不是上线
   - Need to monitor for concerning changes
     - 假设new feature launch，但是发现第二天time spent下降10%，**需要立马pause**，尽管这个可能是个假的signal
     - 分析：measure有问题 还是 实验真的造成negative impact
  
+## Metric Evaluation 
+- If metrics **move positively**
+  - Is the result expected??? If see, launch
+  - Need further investigation if results look too good to be true
+    - 原本预计improve 2%，但是result是5%
+    - Check Experiment Randomization Setup
+    - Check Metrics Calculation ...
+- If metrics **move negatively** --> **面试常见考点**
+  - Expected? If not, deep dive to find causes(Bug? Data Logging issue??)
+    - Content Loading Time: 即使move negatively，也是好事
+    - Time Spent: 我们希望move positively，但是move negatively， Need to find causes
+  - Consider Trade-Off(eg. **comment** increase 1% > **like** decrease 1%)
+    - comment + like 都是topline metrics
+    - 工作中常见的Trade-Off
+    - Comment花的effort 要比 Like花的effort 多 --> 所以Comment是相对重要的Metrics --> Comment 也提供了内容的产出 --> 进一步刺激Engagement(Like, Comment, Repost) --> 我们愿意去Trade-Off --> **Overall Net Gain is Positive**
+   
+- If metrics are **neutral**
+  - Is the experiment under-powered
+    - Not Enough Sample Size
+    - Other Reasons (Seasonality-->导致app traffic变少-->达不到预计sample size) 
+  - Is the result positive on a specific segment
+    - Subsegment vs. Overall
+    - **Subsegment vs. Subsegment**
+      - different regions (North America, Asia)
+      - different platform (IOS, Android)
+  
+<img width="882" alt="Screenshot 2024-03-23 at 13 07 11" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/144fcf31-dabf-48ff-8a9a-1a85ba0d4ac5">
+
+## Multiple Testing
+- 如果连续看result10天，至少一次出现False Positive的概率是 $1 - (1-0.05)^(10) = 40%$
+- Correction：
+  - 降低False Positve可能性
+  - **Bonferroni Correction（简单粗暴）**
+    - Set Alpha_i =  alpha / m for each experiment
+    - Ex. alpha = 0.05, 10 experiments --> alpha_new = 0.05 / 10 = 0.005
+    - **Drawbacks**: 矫枉过正，hard to detect stat sig difference and hard to reject null hypothesis
+  - **False discovery rate adjustments**
+    <img width="703" alt="Screenshot 2024-03-23 at 13 21 39" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/b36ac9a2-5d26-4f7b-b130-751173e343e4">
+
+
+## Common Problem
+- **1. Network Effect**
+  - Facebook
+  - Linkedin
+  - Wechat
+  - **Ex. Red Pocket**
+    - Goal: increase engagement
+    - Test(enable red pocket) vs. Control (not visible red pocket)
+    - 假设2人in Test Group， 2人in Control Group
+    - Send a red pocket to a person in the control group, the person can't see it and gets confused!!!
+    - Test users didn't get a response from the receiver, which decreased the engagement in the test group due to the network effect.
+    - **Solution:**
+      - **Country Level / Region Level / Isolated Region Test**
+        - 两个相似地区，其中一个为control，另外一个为test，两者互不联系
+        - Australia vs. New Zealand
+        - LA vs New York
+      - **Network Clustering**
+        - user 和 user's friends assigned to the same cluster
+        - Decrease intervention
+       
+  - **Tinder, Bumble, CMB**
+    - 无法做 Network Clustering，User‘s Goal is not to engage with friends. Otherwise, the goal is to know more strangers
+    - 无法做Country/Region Level Test.
+   
+  - **Ex. Video Call**
+    - Goal: increase average video call time
+    - Test(Improve video call button) vs. Control (nothing change)
+    - 假设 my friend in the Test Group， I am in the Control Group
+    - my friend is more likely to call others due to the new feature, including the video call with me, which increased the average video call time also in the control group
+    - if the Test average video call time **increases by 10%**, the overall average video call time **increases by more than 10%**(Test User average video call time increases and also user average video call time increases --> **we underestimate average video call time**)
+    - **Solution:**
+      - **Country Level / Region Level / Isolated Region Test**
+        - 两个相似地区，其中一个为control，另外一个为test，两者互不联系
+        - LA (Test) vs SF (Control)
+      - **Network Clustering**
+        - user 和 user's friends assigned to the same cluster
+        - Decrease intervention
+ <img width="774" alt="Screenshot 2024-03-23 at 14 56 31" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/41ee1a19-c28a-4ed0-bda0-3ce927144029">
+
+
+- **2. Marketplace**
+  - Uber
+  - Airbnb
+  - Doordash
+  - **Multi-Sides**：
+    - Drivers
+    - Customers
+    - Restaurants
+    - Delivery Persons ...
+   
+  - Ex. **Uber Eats**
+    - Treatment: Simplify Order Process
+    - Control: Nothing Change
+    - Metrics: Total Order Time = Receive Food - Start Order (Topline)
+    - Test and Control Groups share the same driver pool and restaurant pool
+    - 哪怕没有直接影响，但是有间接影响 （都拿Uber Eats点餐 --> 同家restuarant + 同家 Driver --> restuarnt 先做Test Users + driver 先送 Test Users -> 对Test User提升based on 牺牲Control Users）
+   
+  - **Ex. Uber (Overestimate)**
+    - Treatment: better-matching algo
+    - Control: Nothing Change
+    - Place: Shanghai
+    - **if the Test average waiting Time **decreases by 10%**, the overall average waiting time **decreases by less than 10%**(对Test User提升based on 牺牲Control User)
+   
+  - **Solution:**
+    - **Region Level / Isolated Region Test**
+      - 两个相似地区，其中一个为control，另外一个为test，两者互不联系
+        - **Assumption**:
+          - User Behaviors are comparable
+          - Driver Behaviors are comparable
+          - Driver:Customer Ratios are comparable)
+          - Public Transportation is comparable （公共交通便利地区 ———> 打车可能少）
+          - Weather is comparable (下雨天打车多)
+          - ...
+      - LA vs SF
+    - **Switching Hours**
+      - 7 - 8 for Control (everyone)
+      - 8 - 9 for Test (everyone)
+      - 9 - 10 for Control (everyone)
+      - ...
+      - **Cautions:**
+        - 不能是user visible feature change（界面改变）
+          
+  <img width="1016" alt="Screenshot 2024-03-23 at 15 44 35" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/4be7e476-2112-4d11-ac4e-1f7a9b34cf3f">
+
+  - **3. Simpson‘s Paradox**
+    - Reasons:
+      - The setup of your experiment is incorrect
+        - Randomization is not enough
+        - Exposure Imbalance in Test and Control Groups
+      - The Change affects new users and experienced users (or other user segmentation) differently 
+   
+<img width="724" alt="Screenshot 2024-03-23 at 16 25 31" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/ebf5e96f-e1e1-4b49-bd32-9ab394f51f3d">
+
+## Interview Questions
+<img width="1064" alt="Screenshot 2024-03-23 at 16 55 18" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/3b5f1540-e14c-4362-9009-eabbe18a594e">
+
+#### 1. There are two experiments, and we want to test 3 versions of algo A, B, C. Two options, **The first experiment** A vs B and use the winner to test C again. **The second experiment** is to compare A, B, and C together. **Which one do you propose and why?**
+
+**Solution:**
+- **Clarification Questions**: A(Red), B(Blue), C(Current Version)
+- **Sample Size**
+  - We need to make sure that we have enough power to detect the statistically significance difference
+  - The sample size is not enough --> Option 1
+  - The sample size is enough --> Option 2
+- **Time**
+  - if we have enough time to launch this feature, A vs.B 14 days + winner vs.C 14 days = 28 days
+  - if we don't have enough time to launch this feature, A vs.B vs. C 14 days
+    - Control the external effects, since all three arms are tested in the same time frame
+    - Or, We save time
+- **User Experience**
+  - Option 1 --> 可能存在一个User经历三个版本的情况（Randomization做不好） --> user experience inconsistent --> 对feature体验不好，产生aversion
+ 
+- **Conclusion**: We can't easily make a conclusion about which one is better and each has a tradeoff.
+  
+
+
+#### 2.Pinterest Product Analyst Experiment
+<img width="986" alt="Screenshot 2024-03-23 at 17 18 20" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/ccf88798-a3c1-4164-a913-33143418de90">
+
+- **Why do we need to do this AB Testing?????** -> First question to clarify
+  - Goal: 提升search的experience + 更多的下载图片 
+- **what metrics would you like to measure?**
+  - 
+
+
+      
