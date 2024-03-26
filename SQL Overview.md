@@ -67,3 +67,25 @@
 - SELECT (**Windows Function Happens Here**)
 - ORDER BY
 - LIMIT
+
+
+## 7. JOIN
+
+- LEFT JOIN 首选！！
+- 为什么分很多表格？？
+  - 如果都储存在一张表，Data Dimension会很大，导致data redundancy
+  - 如果都储存在一张表，并且更新表格的信息， Update中用到的人力成本和数据库调度成本会很大，导致Data Integrity
+ 
+<img width="765" alt="Screenshot 2024-03-26 at 16 44 30" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/3686c43f-474f-4480-979f-1a29b890d24c">
+<img width="290" alt="Screenshot 2024-03-26 at 16 45 12" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/8f5e9201-f953-4da3-b5d1-d2b91ea04652">
+
+
+## 8. UNION & UNION ALL
+
+- Vertical Stack of Two Results
+- Columns have to be the same type
+- **UNION** 去除 duplicate （O(n) Time Complexity）
+- **UNION ALL** 包含所有 （O（1）Time Complexity）--> **速度更快**
+<img width="740" alt="Screenshot 2024-03-26 at 16 49 49" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/3b9c19ec-d068-4841-a574-11d633d4cadb">
+
+
