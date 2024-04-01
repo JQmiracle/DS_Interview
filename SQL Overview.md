@@ -102,9 +102,34 @@
 <img width="602" alt="Screenshot 2024-04-01 at 13 34 02" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/50bfbb30-0d2d-4baf-a275-c85419908b35">
 
 
+```SQL
+
+SELECT ProductID
+FROM Table
+ORDER BY Price desc
+LIMIT 1 OFFSET 3
+
+```
+
 ## 11. Case When
 - Don't Forget **'end'** during the interview
 - Case When Can be used within **agg**
 
 <img width="623" alt="Screenshot 2024-04-01 at 13 35 44" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/0423136b-2d8b-4e06-abbd-4aa94933619f">
 
+
+
+```SQL
+
+WITH Temp AS (
+SELECT *, CASE WHEN Price >= 100 THEN 'high_end'
+            WHEN Price Between 20 AND 100 THEN 'middle_end'
+            ELSE 'low_end' END AS category
+FROM Table
+)
+
+SELECT category, COUNT(1) as num_product
+FROM Temp
+GROUP BY category
+
+```
