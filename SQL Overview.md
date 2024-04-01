@@ -89,3 +89,15 @@
 <img width="740" alt="Screenshot 2024-03-26 at 16 49 49" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/3b9c19ec-d068-4841-a574-11d633d4cadb">
 
 
+## 9. Data Definition Language (Create Table, Alter Table, Delete Table)
+
+- Drop Table: **最危险，直接放到垃圾箱**
+- Delete Table：先读取Table信息，然后再扔到垃圾箱
+- Truncate Table：不读取Table信息，直接扔到垃圾箱，但是保留Table数据结构
+
+<img width="724" alt="Screenshot 2024-04-01 at 13 22 39" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/7f2ddf00-1eec-43ac-808f-2e9f29fec3b8">
+
+
+## 10. Subquery and Temp Table (*****)
+
+
