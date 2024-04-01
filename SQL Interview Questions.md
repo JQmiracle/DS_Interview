@@ -25,3 +25,16 @@ GROUP BY vendor, vendor_name
 ORDER BY num_of_offers desc
 
 ```
+
+<img width="452" alt="Screenshot 2024-04-01 at 13 25 59" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/7f382359-b3b0-41d0-8507-5241ca54a4a5">
+
+```SQL
+
+SELECT ProductID
+FROM Table
+ORDER BY Price desc
+LIMIT 1 OFFSET 3
+
+
+```
+
