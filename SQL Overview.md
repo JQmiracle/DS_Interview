@@ -133,3 +133,38 @@ FROM Temp
 GROUP BY category
 
 ```
+
+## 12. Windows Function
+
+<img width="711" alt="Screenshot 2024-04-01 at 13 53 17" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/571b8196-e1c3-4bc1-947c-700b7a56e387">
+
+<img width="627" alt="Screenshot 2024-04-01 at 13 54 29" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/9012c853-8678-44fc-b285-f1b811cd7031">
+<img width="456" alt="Screenshot 2024-04-01 at 13 59 07" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/f5fa7c6a-af48-461f-a703-8690f93db8ba">
+
+```SQL
+
+WITH Temp AS (
+SELECT *, dense_rank() over (order by price desc) as rnk
+FROM Table
+)
+
+SELECT productID
+FROM Temp
+WHERE rnk = 4
+
+```
+<img width="464" alt="Screenshot 2024-04-01 at 13 59 16" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/89de36c9-df5d-42d1-8afc-549a83a40580">
+
+```SQL
+
+WITH Temp AS (
+SELECT *, dense_rank() over (partition by categoryID order by price desc) as rnk
+FROM Table
+)
+
+SELECT categroyID, productID
+FROM Temp
+WHERE rnk = 4
+
+```
+
