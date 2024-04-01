@@ -25,29 +25,52 @@
 
 ## 4. Common User Analysis Framework
 ### AARRR (New users become loyal users)
+<img width="915" alt="Screenshot 2024-04-01 at 10 49 18" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/ab30e280-41ca-430a-b928-c07a14a7b66a">
 
 - **Acquisition: Users find you**
   - **Marketing**:
-    - organic:传统方法
-    - paid / advertising
+    - **organic:传统方法**
+    - **paid / advertising**
       - App store 打广告
       - 路边巨大二维码广告
       - 电视广告
   - **Acquisition Cost**
   - **Marketing Channel（考虑那个channel投入最大，而且不同channel触及的人群不一样，所以同样要考虑diversification）**:
-    - **Optimize 投资回报率 + 人群 Diversification**
+    - **Optimize 投资回报率 + 人群 Diversification** (三方面考虑！！！)
       - Volume (考虑每个channel内部有多少potential customers)
       - Cost (100$/customer vs. 10$/customer)
       - Quality (Conversion Rate)
         - Ex. 公司早起阶段，更愿意牺牲Revenue，获得更多的增长和客户流量
-        - Ex. 公司成熟阶段，成长瓶颈期，新用户的增长的重要性降低，更愿意寻找变现的途径
-    - 发传单
-    - Twitter上发广告
-    - Google Ads
+        - Ex. 公司成熟阶段，成长瓶颈期，新用户的增长的重要性降低，更愿意寻找变现的途径    
+    - Channel Examples:
+      - 发传单
+      - Twitter上发广告
+      - Google Ads
  
 - **Activation: Users' first experience with your product**
+  - **用户下载软件且完成一些基本操作**
+  - Ex.完善个人Profile； Netflix选择10部喜欢的电影；
+  - Ex.Facebook activation point： if connect 10 friends within a week --> high prob of retention rate
+
 - **Retention: Means and rates of users returned**
+  - **最最重要！！！**
+  - DAU, MAU 也重要！！！
+  - $$Week-X-Retention (Weekly)  = \frac{num-of-users-retained-on-week-X}{num-of-users-who-started-using-product-on-week-0}$$
+    - Week 0 100 -> 100%
+    - Week 1 50 -> 50%
+    - Week 2 20 -> 20%
+    - **每个用户的week 0不一样，所以需要按照不同起始日分成cohort计算**
+      - Datelist Feature
+    - **Retention Curve (J - Curve)**
+     <img width="459" alt="Screenshot 2024-04-01 at 11 07 21" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/5395cf70-43b8-431a-b74a-69249d56727b">
 
-
-  
+      - 健康的Retention Curve：从week 4 之后，变成平稳，会有20%的loyal customers，找到了PMF（Product Market Fit）
+      - 不健康的Retention Curve：从week 4 之后，会一直下跌，直到0%。即使DAU有100万人，但是会一直流失客户，所以是个非常大的warning
+        - 可以做出改变，然后对比新旧的retention curve
+      - **Retention Metrics 的一些注意事项**：
+        - Lagging Metrics：现实生活中，**可能需要花很长时间**(6-12months)才能观察到平稳期出现
+          <img width="457" alt="Screenshot 2024-04-01 at 11 16 52" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/98319e78-34cf-4dbb-9612-2006961e58f5">
+        - 解决办法：
+          - 把注意力集中在前几周，最快下降最大可能出现在第一周（一般用户不喜欢的话，会在一周内离开APP）
+          - 尽快看到前三周signal，及时改善产品，稳定retention rate
 
