@@ -29,10 +29,11 @@ ORDER BY num_of_offers desc
 
 <img width="542" alt="Screenshot 2024-04-02 at 08 53 25" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/c6d45495-e49a-4f4a-99bb-60d3a0340d46">
 
-<img width="1113" alt="Screenshot 2024-04-02 at 08 56 17" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/e1062510-85e0-4a94-b534-08b6e11a7d4b">
+### Orders
+<img width="1316" alt="Screenshot 2024-04-02 at 09 18 22" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/80516bf0-4527-4a17-b2ce-b2c106c1603c">
 
-<img width="1152" alt="Screenshot 2024-04-02 at 08 56 38" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/25936a92-c26a-4e64-a058-82d52438b469">
-
+### OrderDetails
+<img width="1376" alt="Screenshot 2024-04-02 at 09 18 32" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/52fea4c7-ac1f-4b48-9825-c4cd0da68697">
 
 ```SQL
 
@@ -45,7 +46,8 @@ GROUP BY o.EmployeeID
 
 ```
 
-<img width="1149" alt="Screenshot 2024-04-02 at 09 00 17" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/e72cacd2-d454-4cd4-ad37-b5fb140418e1">
+### Employees
+<img width="1025" alt="Screenshot 2024-04-02 at 09 18 38" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/56bd5cc1-bacf-4aa2-a313-9b06220dbc69">
 
 ```SQL
 
