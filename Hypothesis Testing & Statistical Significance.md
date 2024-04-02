@@ -96,6 +96,8 @@
 
 <img width="722" alt="Screenshot 2024-03-09 at 11 26 34" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/4268c7ef-8c91-491e-b552-3edbbadb1523">
 
+https://online.stat.psu.edu/stat500/book/export/html/541
+
 
 ## T test
 
