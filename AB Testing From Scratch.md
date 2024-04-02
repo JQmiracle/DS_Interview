@@ -49,6 +49,10 @@
   - sample variance = $\sigma^{2} / n$ (n = 样本数)
   - **为什么我们做AB Testing，除了计算sample mean还要给出confidence interval和p value得真正原因**
 
+<img width="512" alt="Screenshot 2024-04-02 at 11 58 35" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/7a513fdd-f9eb-4a79-9cc7-187551932b0f">
+
+
+
 ## Example：
   - **这个实验的Hypothsis 是什么？？**
     - 假设把用户打开手机Airbnb APP，默认登录到Trips，可以提醒那些没有订房的用户，目前还没有任何旅行计划，以提高订房量
