@@ -3,7 +3,6 @@
 ## 1. A/B Testing 三大要素
 
 - **Hypotheses**
-  -  
 - **GROUP A and GROUP B**
   - GROUP A：代表产品**现有的设计** 
   - GROUP B：代表hypothesis里想要**验证的新设计**
@@ -27,15 +26,38 @@
     - 测量新功能是否呈现出预期的价值 
   - Tracking Metrics
     - 监测新设计如何改变用户行为
-- Example：
-  - 这个实验的Hypothsis 是什么？？
+  - Guardrail Metrics
+    - 用来限制新设计对非目标metrics的负面影响
+    - FB: DAU as core metrics, major revenue from Ads
+      - increase DAU as core metrics
+      - Ads revenue as guardrail metrics （Limit）
+      - 不管新设计提高多少DAU，只要Ads revenue跌过这个Limit，就去否决新设计
+        
+  - **Summary**： 通过A/B Testing -> 测量metric -> 来验证Hypothesis
+ 
+## 2. 统计学原理
+- **Population**：全体用户集合
+- **Sample**: Sample A 用户组 and Sample B 用户组 ->从population随机抽取一个一个observation就组成Sample 
+- **Observation**：每个Sample里面的一个一个的用户就是Observation
+- **Std**：描述数据的波动
+- **Mean**：描述数据的平均值
+- **Law of Large Numbers**：an observed sample average from a large sample will be close to the true population mean and it will get closer the larger the sample
+  - 可以从观测到sample，计算sample mean，来推算出population mean。sample 里面observation越多，**估算**！！！也更准确
+- **Central Limit Theorem**：用来描述Sample Mean这个Random Variable的分布，只要sample的样本量足够大，无论population的分布是怎么样的，sample mean的分布一定是一个正态分布
+  - sample mean 因为抽样随机性，导致波动的Random Variable 
+  - sample mean = population mean($\mu$)
+  - sample variance = $\sigma^{2} / n$ (n = 样本数)
+  - **为什么我们做AB Testing，除了计算sample mean还要给出confidence interval和p value得真正原因**
+
+## Example：
+  - **这个实验的Hypothsis 是什么？？**
     - 假设把用户打开手机Airbnb APP，默认登录到Trips，可以提醒那些没有订房的用户，目前还没有任何旅行计划，以提高订房量
    
-  - 这个实验对应的Group A and Group B的用户体验分别是什么？？
+  - **这个实验对应的Group A and Group B的用户体验分别是什么？？**
     - Group A：用户默认登录到Explore (确保这个用户每次默认登陆到Explore)
     - Group B：用户默认登录到Trips  (确保这个用户每次默认登陆到Trips)
    
-  - 这个实验的Metrics 是什么？？
+  - **这个实验的Metrics 是什么？？**
     - Core Metrics：订房量
     - Tracking Metrics：浏览量， 搜素房源的订房转化率
     - 两组之间订房量的difference
@@ -44,6 +66,3 @@
       - 如果看到订房量有减无增，但是浏览量上升
         - 用户从Explore界面搜索房源得到房源列表的相关性 会比 用户从Trips界面，点击Start Exploring，再搜索，得到的房源列表的相关性要高 -> 因此被分到Trips的用户，虽然浏览的更多房源的搜索结果，但是还无法找到心仪的房源
         - Monitor两组的搜素房源的订房转化率，可以验证以上hypothesis是否正确
-        
-  - **Summary**： 通过A/B Testing -> 测量metric -> 来验证Hypothesis
- 
