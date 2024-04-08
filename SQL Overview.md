@@ -78,6 +78,7 @@
  
 <img width="765" alt="Screenshot 2024-03-26 at 16 44 30" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/3686c43f-474f-4480-979f-1a29b890d24c">
 <img width="290" alt="Screenshot 2024-03-26 at 16 45 12" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/8f5e9201-f953-4da3-b5d1-d2b91ea04652">
+<img width="958" alt="Screenshot 2024-04-08 at 15 27 12" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/b3eed7b9-53f7-4498-b6b9-143e1d68aa53">
 
 
 ## 8. UNION & UNION ALL
@@ -168,3 +169,59 @@ WHERE rnk = 4
 
 ```
 
+## 13. More on NULL value in SQL
+
+<img width="902" alt="Screenshot 2024-04-08 at 15 13 37" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/bab30475-8fcd-4181-be19-771c7611cf15">
+
+<img width="1072" alt="Screenshot 2024-04-08 at 15 12 52" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/1d0926b6-e3fd-4442-8711-d62bc6ececf9">
+<img width="968" alt="Screenshot 2024-04-08 at 15 13 20" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/e8a7410e-9263-4202-bfca-c4b4065436a0">
+
+
+## 14. Date Functions
+```SQL
+SELECT DATE_ADD("2017-06-15", INTERVAL 10 DAY);
+
+# DATE_ADD("2017-06-15", INTERVAL 10 DAY)
+# 2017-06-25
+
+
+SELECT DATE_SUB("2017-06-15", INTERVAL 10 DAY);
+
+# DATE_SUB("2017-06-15", INTERVAL 10 DAY)
+# 2017-06-05
+
+
+SELECT DATEDIFF("2017-06-25", "2017-06-15");
+# DATEDIFF("2017-06-25", "2017-06-15")
+# 10
+
+
+SELECT CURDATE();
+# The CURDATE() function returns the current date.
+# Note: The date is returned as "YYYY-MM-DD" (string) or as YYYYMMDD (numeric).
+# Note: This function equals the CURRENT_DATE() function.
+
+
+The NOW();
+# returns the current date and time.
+# Note: The date and time is returned as "YYYY-MM-DD HH:MM:SS" (string) or as YYYYMMDDHHMMSS.uuuuuu (numeric).
+
+
+SELECT DATE("2017-06-15 09:34:21");
+# DATE("2017-06-15 09:34:21")
+# 2017-06-15
+
+
+CAST(date_col as DATE);
+
+
+SELECT MONTH("2017-06-15 09:34:21");
+# MONTH("2017-06-15 09:34:21")
+# 6
+
+
+SELECT YEAR("2017-06-15 09:34:21");
+YEAR("2017-06-15 09:34:21")
+2017
+
+```
