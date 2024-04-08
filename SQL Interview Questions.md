@@ -47,6 +47,16 @@
 - 第二个方式更快：在表格join之前，把ORDER表格做了**Partition**分割，Table Size变小，执行速度更快
 
 
+### 10. UNION VS. UNION ALL
+- Vertical Stack of Two Results
+- Columns have to be the same type
+- UNION 去除 duplicate （O(n) Time Complexity）
+- UNION ALL 包含所有 （O（1）Time Complexity）--> 速度更快
+
+### 11. UNION VS. JOIN
+- UNION:Vertical Stack of Two Results
+- JOIN: Horizontal Stack of Two Results
+
 
 ## 2. Quiz
 <img width="877" alt="Screenshot 2024-03-26 at 15 36 36" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/8e97d86a-1866-4314-89f2-8c44d0ca2a40">
