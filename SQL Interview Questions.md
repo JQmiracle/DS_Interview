@@ -75,3 +75,29 @@ ORDER BY total_orders DESC
 LIMIT 10
 
 ```
+
+
+## 3. Concept Questions
+
+### 1. What function can fill null value?
+- **CASE WHEN col1 IS NULL THEN '1'**
+- **ISNULL/IFNULL(col1, 0)**
+- **COALESCE(Col1, 0)**
+- **COALESCE(Col1, Col2, 0)**
+  - if Col1 is null, it replaces null with Col2
+  - if Col1 and Col2 are null, it replaces null with 0
+<img width="594" alt="Screenshot 2024-04-08 at 14 35 09" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/8096ac02-c928-482f-8e73-9bb342cacc28">
+
+- **Between ... And...**
+  - 闭区间
+ 
+- **Find the name of employees that begin with 'z' or 'Z'**
+  - name LIKE 'z%' OR name LIKE 'Z%'
+  - LOWER(name) LIKE 'z%'
+ 
+- **What is the difference between NULL and 0?**
+  - **NULL is used in SQL to represent a missing, unknown, or inapplicable value in a database**. It is a marker or placeholder used to indicate that the data value does not exist in the database. Importantly, NULL signifies the absence of any data type and is not equivalent to zero, an empty string, or any other value. Operations involving NULL values usually result in NULL, underlining the concept that an operation involving an unknown value yields an unknown result.
+  - **Comparisons**: In SQL, comparing any value (including zero) with NULL using standard comparison operators (e.g., =, <, >) will result in NULL, which is interpreted as false in the context of a where clause. This necessitates the use of the **IS NULL or IS NOT NULL** operators to **properly handle NULL values in conditions.**
+  - **Arithmetic operations**: Arithmetic operations involving NULL (e.g.,**NULL + 10) result in NULL**, while operations with zero follow standard arithmetic rules (e.g., 0 + 10 results in 10).
+  - **Aggregate functions**: Most aggregate functions (like **SUM, AVG) ignore NULL values but treat zero as a legitimate value**. For example, the **average of {NULL, 5, 10} is 7.5, not including the NULL in the calculation**, whereas the average of {0, 5, 10} includes zero, resulting in an average of 5.
+- 
