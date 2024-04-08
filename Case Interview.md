@@ -74,3 +74,55 @@
           - 把注意力集中在前几周，最快下降最大可能出现在第一周（一般用户不喜欢的话，会在一周内离开APP）
           - 尽快看到前三周signal，及时改善产品，稳定retention rate
 
+- **Referral: Users tell the others about you**
+  - **Goal: 吸引更多用户**
+  - Methods: Word-of-mouth, incentives,  
+  - 面试比较少涉及
+ 
+- **Revenue: The profits you gain**
+  - Business Model
+    - subscription fee
+    - advertisement revenue
+    - Or, Just care about the customer growth rate 
+  - 判断现阶段是否盈利
+    - Ex. 推送内容改变 -> Engagement 提升(广告Space 改成 和用户息息相关的内容) -> But, Ad Revenue 大幅下降（Guardrail Metric） -> **这个recommendation不能接受**
+   
+- **AARRR Example**（Model APP Customer Purchase Funnel）
+  - Customer Lifetime Value
+    - Average User spent / Month = 10$
+    - Monthly Retention = 20% (Stabilized)
+    - Monthly Churned Rate = 80% (Stabilized)
+    - Average User Lifetime Period
+      - If a firm has a 60% loyalty rate, then their loss or churn rate of customers is 40% (Note: These two rates always add to 100%.)
+      - Customer lifetime value period can be calculated as 1 /40% = 2.5 months. 
+    - **Customer Lifetime Value** = Average User spent / Month * Average User Lifetime Period  = 10 * (1 / 80%) = 12.5$
+      <img width="1140" alt="Screenshot 2024-04-08 at 13 09 41" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/67287c2d-38e7-448c-847d-45597b49133b">
+
+
+## 4. Key Metrics in Social Network (Social Media App(Care More): Linkedin, WeChat, Facebook...)
+- **Growth（用户的覆盖面宽度）** 
+  - DAU
+    - **existing users + new users + resurrected users(复活用户) - churned users**
+    - 如何定义：
+      - 但凡一个用户在过去一周内active过至少一次
+      - active的具体定义
+        - 至少login一次
+        - 至少take meaningful action 一次
+        - 至少发过一张图片
+        - ...    
+    - 每年APP活跃度对比，如果活跃度提升，证明APP更加active -> 更多人愿意在APP打广告 -> Potential Ad Revenue Increases
+  - WAU
+  - MAU
+- **Engagement（用户使用产品的深度）**
+  - **Time Spent**
+    - 用户APP使用时间越久，看广告的可能性越大，广告商更愿意投放广告
+  - **重要：Lness**
+    - L7：过去7天用户在APP上活跃天数
+      - L7 = 3 ：On Average，过去7天用户在APP上活跃天数为3
+    - L28 过去28天用户在APP上活跃天数
+      - L28 = 10 ：On Average，过去28天用户在APP上活跃天数为10
+  - **\# of session**
+  - **\# of meaningful actions: posts/comments/likes/shares**
+ 
+- **Retention**
+  
