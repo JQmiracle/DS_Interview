@@ -125,4 +125,15 @@
   - **\# of meaningful actions: posts/comments/likes/shares**
  
 - **Retention**
-  
+  - $$Week-X-Retention (Weekly)  = \frac{num-of-users-retained-on-week-X}{num-of-users-who-started-using-product-on-week-0}$$
+    - Week 0 100 -> 100%
+    - Week 1 50 -> 50%
+    - Week 2 20 -> 20%
+    - **每个用户的week 0不一样，所以需要按照不同起始日分成cohort计算**
+  - **需要考虑用户加入的第一天**
+- **Stickiness**
+  - $$\frac{num-of-users-retained-on-month-X}{num-of-users-who-started-using-product-on-month-Y}$$
+  - **不需要考虑用户加入的第一天**
+  - $$\frac{这个月活跃多少人}{上一个月活跃多少人}$$
+ 
+- **Retention 比 Stickness 更加严谨**
