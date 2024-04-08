@@ -2,8 +2,8 @@
 
 ## 1. A/B Testing 三大要素
 
-- **Hypotheses**
-- **GROUP A and GROUP B**
+- ### **Hypotheses**
+- ### **GROUP A and GROUP B**
   - GROUP A：代表产品**现有的设计** 
   - GROUP B：代表hypothesis里想要**验证的新设计**
   - **实验对象并非全体用户**
@@ -21,7 +21,7 @@
 
    
 
-- **Metrics**
+- ### **Metrics**
   - Core / Success / Target Metrics (1 - 2 个)
     - 测量新功能是否呈现出预期的价值 
   - Tracking Metrics
@@ -54,14 +54,14 @@
 
 
 ## Example：
-  - **这个实验的Hypothsis 是什么？？**
+  - ### **这个实验的Hypothsis 是什么？？**
     - 假设把用户打开手机Airbnb APP，默认登录到Trips，可以提醒那些没有订房的用户，目前还没有任何旅行计划，以提高订房量
    
-  - **这个实验对应的Group A and Group B的用户体验分别是什么？？**
+  - ### **这个实验对应的Group A and Group B的用户体验分别是什么？？**
     - Group A：用户默认登录到Explore (确保这个用户每次默认登陆到Explore)
     - Group B：用户默认登录到Trips  (确保这个用户每次默认登陆到Trips)
    
-  - **这个实验的Metrics 是什么？？**
+  - ### **这个实验的Metrics 是什么？？**
     - Core Metrics：订房量
     - Tracking Metrics：浏览量， 搜素房源的订房转化率
     - 两组之间订房量的difference
