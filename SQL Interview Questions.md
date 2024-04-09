@@ -159,7 +159,7 @@ LIMIT 1
 ```SQL
 
 SELECT
-  s.sender_IP_city, COUNT(s.transaction_id) as number_of_emails, SUM(spam) as number_of_spams, AVG(spam) * 1.0 as spam_rate
+  s.sender_IP_city, COUNT(s.transaction_id) as number_of_emails, SUM(spam) as number_of_spams, AVG(spam * 1.0) as spam_rate
 FROM email_transaction e
 LEFT JOIN spam s
 ON e.transaction_id = s.transaction_id
