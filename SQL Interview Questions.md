@@ -121,5 +121,50 @@ LIMIT 10
 ```
 
 
-## 3. Concept Questions
+## 3. Practice Questions
+<img width="1044" alt="Screenshot 2024-04-08 at 15 29 29" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/6c1eecb9-edd7-4318-a01b-8711dcb90f4f">
 
+
+```SQL
+WITH temp AS(
+SELECT
+  CONCAT(YEAR(transaction_date), MONTH(transaction_date) AS year_month ,
+  from_user_id,
+  COUNT(transaction_id) as num_email_sent
+FROM email_transaction
+GROUP BY 1, 2
+)
+SELECT
+  num_email_sent,
+  COUNT(DISTINCT from_user_id) AS num_from_user_id
+FROM temp
+GROUP BY num_email_sent
+ORDER BY num_email_sent desc
+LIMIT 1
+
+```
+
+```SQL
+## What is the distribution of likes everyday?
+## 两次GROUP BY
+## GROUP BY user_id, timestamp -> COUNT(Likes) -> total_num_likes
+## GROUP BY total_num_likes, timestamp -> COUNT(user_id) -> total_num_users
+```
+<img width="339" alt="Screenshot 2024-04-08 at 16 01 47" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/cca8f681-11e5-4182-8942-df3b95f31271">
+
+
+<img width="1003" alt="Screenshot 2024-04-08 at 16 05 30" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/1a947770-9366-4c89-b3f3-ea3f3184c2d0">
+
+
+```SQL
+
+SELECT
+  s.sender_IP_city, COUNT(s.transaction_id) as number_of_emails, SUM(spam) as number_of_spams, AVG(spam) * 1.0 as spam_rate
+FROM email_transaction e
+LEFT JOIN spam s
+ON e.transaction_id = s.transaction_id
+WHERE e.transaction_date > '2018-01-01'
+GROUP BY s.sender_IP_city
+
+
+```
