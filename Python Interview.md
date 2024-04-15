@@ -45,7 +45,7 @@ def find_freq(input):
       dict[i] = dict[i] + 1
   
   for key, value in dict.items():
-    for value > 1:
+    if value > 1:
       print('Duplicate:{} and Frequency:{}'.format(key, value))
     print('Word: {} and Count: {}'.format(key, value))
 ```
@@ -66,7 +66,7 @@ def remove_duplicates(input):
   
   ## Method 1: keep value = 1
   for key, value in dict.items():
-    for value > 1:
+    if value > 1:
       dict.pop(key)
     print('Word: {} and Count: {}'.format(key, value))
 	return dict
