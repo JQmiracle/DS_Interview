@@ -92,9 +92,9 @@
 
 ## 9. Data Definition Language (Create Table, Alter Table, Delete Table)
 
-- Drop Table: **最危险，直接放到垃圾箱**
-- Delete Table：先读取Table信息，然后再扔到垃圾箱
-- Truncate Table：不读取Table信息，直接扔到垃圾箱，但是保留Table数据结构
+- Drop Table: **最危险，直接放到垃圾箱** completely removes everything associated with the table - data and structure.
+- Delete Table：先读取Table信息，only deletes the data within the table but leaves the table structure and its definitions (like column names, data types, etc.) in the database.
+- Truncate Table：不读取Table信息，delete all rows from a table, but it does not remove the table itself from the database. It is similar to the DELETE FROM command without a WHERE clause but is often more efficient.
 
 <img width="724" alt="Screenshot 2024-04-01 at 13 22 39" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/7f2ddf00-1eec-43ac-808f-2e9f29fec3b8">
 
