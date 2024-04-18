@@ -234,3 +234,28 @@ WHERE rr <= 3
 ```
 
 
+<img width="526" alt="Screenshot 2024-04-18 at 15 10 45" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/a59c07f7-ac3d-419a-a83a-844e684a42c7">
+
+
+```SQL
+WITH temp AS (
+  SELECT
+    s.name AS sale_rep_name,
+    r.name AS region_name,
+    SUM(o.total_amt_usd),
+    rank() over (PARTITION BY r.id ORDER BY SUM(o.total_amt_usd) DESC) AS r
+  FROM Orders o 
+  LEFT JOIN accounts a 
+  ON o.account_id = a.id
+  LEFT JOIN sales_reps s
+  ON a.sales_rep_id = s.id
+  LEFT JOIN region r 
+  ON s.region_id = r.id
+  GROUP BY 1,2
+)
+
+SELECT sale_rep_name, region_name FROM temp WHERE r = 1
+```
+
+
+
