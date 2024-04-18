@@ -168,3 +168,69 @@ GROUP BY s.sender_IP_city
 
 
 ```
+
+<img width="1280" alt="Screenshot 2024-04-18 at 12 16 58" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/fd138d20-6077-4af9-a996-7758dba5d910">
+
+
+```SQL
+## Solution 1 (Windows Functions):
+SELECT
+  CAST(CONCAT(SUBSTRING(year_month,1,4), '-', SUBSTRING(year_month,5,2), '-', '01') AS DATE) AS year_month_2,
+  num_spam,
+  sum(num_spam) over(group by year_month) AS cum_num_spam
+FROM result_table r
+WHERE r.LEFT(year_mouth,4) >= 2018 AND r.state = 'CA'
+```
+
+```SQL
+## Solution 2 (Self Join):
+WITH t1 AS (
+  SELECT
+    CAST (CONCAT (SUBSTRING(year_month, 1,4), '-', SUBSTRING(year_month, 5 ‚2),'-01') as DATE) AS year _month_2,
+    num_spam
+  FROM result_table
+)
+SELECT
+  a.year_month_2,
+  a.num_spam,
+  SUM(b.num_spam) AS cum_num_spam
+FROM t1 a
+LEFT JOIN t1 b
+ON a.year_month_2 >= b.year_month_2
+GROUP BY 1, 2
+ORDER BY 1
+```
+<img width="285" alt="Screenshot 2024-04-18 at 13 01 25" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/ad4b3618-6e9a-4ae9-8a27-2a751bd82496">
+
+
+
+
+<img width="897" alt="Screenshot 2024-04-18 at 13 11 48" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/1be9b9a6-5932-4f09-bb51-3b7c534aaf14">
+
+### 做题习惯：大表格 LEFT JOIN 小表格
+```SQL
+
+WITH temp AS (
+  SELECT
+    s.sender_IP_city,
+    e.from_user_id,
+    COUNT(1) as num_email_sent,
+  FROM email_transaction e
+  LEFT JOIN spam s 
+  ON e.transaction_id = s.transaction_id
+  LEFT JOIN city_to_state c
+  ON s.sender_IP_city = c.city
+  WHERE c.state = 'CA'
+  GROUP BY 1, 2
+),
+temp2 AS (
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY sender_IP_city ORDER BY num_email_sent DESC) as rr
+  FROM temp
+)
+SELECT *
+FROM temp2
+WHERE rr <= 3
+
+```
+
+
