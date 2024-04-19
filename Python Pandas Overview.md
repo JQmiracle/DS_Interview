@@ -62,5 +62,31 @@
 
 <img width="989" alt="Screenshot 2024-04-18 at 16 46 49" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/74e4c4c8-b195-4f93-b8b9-4239ec02fbd5">
 
+## SQL vs. Python
+
+<img width="865" alt="Screenshot 2024-04-18 at 17 04 39" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/fe7387d2-d6da-433c-a6a7-0937478f6b38">
+
+<img width="839" alt="Screenshot 2024-04-18 at 17 05 20" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/11bdfc4e-23e5-4819-979d-553d8517b81d">
+
+<img width="838" alt="Screenshot 2024-04-18 at 17 05 41" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/6922b338-26a8-4fa6-b07e-6442de8252d9">
 
 
+<img width="832" alt="Screenshot 2024-04-18 at 17 05 59" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/4d338d0c-0f30-4228-b817-56500759b49a">
+
+<img width="762" alt="Screenshot 2024-04-18 at 17 06 15" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/b77d19b7-7fbe-41ee-b09e-6a7e6bb0d766">
+
+### Pandas 没有 Having：我们需要先Aggregate，再把aggregate的结果，加多一步Filter
+
+<img width="751" alt="Screenshot 2024-04-18 at 17 07 22" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/fb16b3bd-2f4e-4804-8cd0-9089fa9328f2">
+
+<img width="846" alt="Screenshot 2024-04-18 at 17 09 19" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/6e2a5de1-ce3f-4044-bf31-0bf4b1553133">
+
+<img width="862" alt="Screenshot 2024-04-18 at 17 10 58" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/05ac5b41-2c4c-491f-b2ba-a74cbd78ddb5">
+
+<img width="780" alt="Screenshot 2024-04-18 at 17 15 35" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/a39eb10b-d1ad-47c1-a006-1399b8c6d20b">
+
+<img width="719" alt="Screenshot 2024-04-18 at 17 23 29" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/c9b46ebf-b740-48d1-8eda-5c2cfc22f311">
+
+<img width="465" alt="Screenshot 2024-04-18 at 17 23 37" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/207f8c0d-038b-449d-8e95-6af74378d7ec">
+
+<img width="869" alt="Screenshot 2024-04-18 at 17 25 11" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/559ed12d-4d97-4024-86d7-25598129ee7f">
