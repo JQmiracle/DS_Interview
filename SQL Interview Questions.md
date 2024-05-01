@@ -258,4 +258,152 @@ SELECT sale_rep_name, region_name FROM temp WHERE r = 1
 ```
 
 
+## 4. Mock Questions
+<img width="777" alt="Screenshot 2024-05-01 at 10 41 50" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/22093637-d06f-4247-b799-cccd7b4bc772">
 
+```SQL
+
+WITH repair AS (
+SELECT
+  server_id,
+  date,
+  repair_status,
+  row_number() over (partition by server_id order by date) as rnk
+FROM mock_1
+WHERE repair_status = 'repair'
+),
+online AS (
+SELECT
+  server_id,
+  date,
+  repair_status,
+  row_number() over (partition by server_id order by date) as rnk
+FROM mock_1
+WHERE repair_status = 'online'
+)
+
+SELECT r.server_id, SUM(DATEDIFF(day, r.date, ifnull(o.date, now()))) AS total_days
+FROM repair r 
+LEFT JOIN online o 
+ON r.server_id = o.server_id and r.rnk = o.rnk
+GROUP BY r.server_id
+```
+
+<img width="488" alt="Screenshot 2024-05-01 at 11 08 53" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/b7e20bed-c18d-46d1-b18b-52647d97e3d6">
+
+<img width="485" alt="Screenshot 2024-05-01 at 11 09 11" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/a913ff43-9f6e-428c-b594-fe71909552e8">
+
+<img width="592" alt="Screenshot 2024-05-01 at 11 10 03" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/78553f40-9bce-4d1d-bfa7-c959f1c00fe7">
+
+```SQL
+WITH mock_2_rank AS (
+  SELECT
+  player_id,
+  time_stamp,
+  Kill_or_dead,
+  row_number,
+  row_number() over (PARTITION BY player_id, Kill_or_dead ORDER BY time_stamp) AS consecutive_row_number
+  row_number - row_number() over (PARTITION BY player_id, Kill_or_dead ORDER BY time_stamp) AS status_indicator
+  FROM mock_2
+  WHERE Kill_or_dead = 1
+),
+mock_2_result AS(
+   SELECT
+    player_id,
+    time_stamp,
+    Kill_or_dead,
+    status_indicator,
+    row_number() over(PARTITION BY player_id, Kill_or_dead, status_indicator ORDER BY time_stamp) AS consecutive_kills
+   FROM mock_2_rank
+),
+
+SELECT
+  *,
+  CASE WHEN consecutive_kills = 3 THEN 'Killing Spree'
+       WHEN consecutive_kills = 4 THEN 'Dominating'
+       ELSE 'no_sound'
+  END AS sound_effect
+FROM mock_2_result
+WHERE consecutive_kills >= 3
+ORDER BY time_stamp
+```
+<img width="578" alt="Screenshot 2024-05-01 at 11 52 42" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/7cc3b8b0-fc60-4cf9-b17f-18be5455b072">
+
+
+<img width="574" alt="Screenshot 2024-05-01 at 11 47 57" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/c9196c79-8b30-44cc-80f4-5e48e1f36b5e">
+
+<img width="574" alt="Screenshot 2024-05-01 at 11 51 29" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/09f3ca6e-23f2-4175-930f-ae2cd0dc1154">
+
+<img width="556" alt="Screenshot 2024-05-01 at 11 58 15" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/382b6229-2c7c-4ef7-9d93-cf86e2750b84">
+
+```SQL
+WITH two_times AS (
+  SELECT
+    *,
+    date_add(time_date, interval 10 DAY) AS time_date_2
+  FROM mock_3
+),
+
+time_structure AS (
+  SELECT
+    a.player_id,
+    a.time_date,
+    a.time_date_2,
+    b.time_date AS b_time_date
+    b.num_kill
+  FROM two_time a
+  LEFT JOIN mock_3 b
+  ON a.player_id = b.player_id AND a.time_date <= b.time_date AND a.time_date_2 >= b.time_date
+),
+
+max_table AS (
+ SELECT
+    player_id,
+    time_date,
+    time_date_2,
+    SUM(num_kill) AS kill_3_consecutive_days
+  FROM time_structure
+  GROUP BY 
+    player_id,
+    time_date,
+    time_date_2
+  ORDER BY
+    kill_3_consecutive_days DESC
+  LIMIT 1
+)
+
+ SELECT
+    player_id,
+    time_date,
+    time_date_2,
+    SUM(num_kill) AS kill_3_consecutive_days
+  FROM time_structure
+  GROUP BY 
+    player_id,
+    time_date,
+    time_date_2
+  HAVING SUM(num_kill) = (SELECT kill_3_consecutive_days FROM max_table)
+```
+
+<img width="576" alt="Screenshot 2024-05-01 at 12 22 45" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/34921f91-0011-40dd-900e-19308db0cf01">
+
+
+
+
+<img width="671" alt="Screenshot 2024-05-01 at 11 58 34" src="https://github.com/JQmiracle/DS_Interview/assets/87022634/bdf2f006-bf8d-4bf2-9925-aae1e9fe162a">
+
+```SQL
+WITH t1 AS (
+  SELECT
+    request_at as 'Day',
+    CASE WHEN status != 'completed' then 1 else 0 END AS 'Cancellation_Rate'
+  FROM trips
+  WHERE request_at BETWEEN "2013-10-01" AND "2013-10-03"
+  AND client_id in (SELECT DISTINCT users_id FROM users WHERE banned = 'No')
+  AND driver_id in (SELECT DISTINCT users_id FROM users WHERE banned = 'No')
+)
+SELECT Day, SUM(Cancellation_Rate) AS num_cancel, COUNT(Cancellation_Rate) AS num_request, ROUND(AVG(Cancellation_Rate * 1.0),2) AS Cancellation_Rate
+FROM t1
+GROUP BY Day
+
+```
