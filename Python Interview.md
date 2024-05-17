@@ -90,7 +90,7 @@ class Solution:
             if nums[j] != nums[i]:
                 i += 1
                 nums[i] = nums[j]
-				return i + 1
+	return i + 1
   
 ```
 
