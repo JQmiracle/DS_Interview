@@ -189,7 +189,6 @@ To use the `__init__.py` file to make the `is_odd` function directly accessible 
 Let's say you have the following structure:
 
 ```
-markdownCopy code
 fizzbuzz_math/
     __init__.py
     math_functions.py
@@ -198,7 +197,6 @@ fizzbuzz_math/
 And `math_functions.py` contains:
 
 ```
-pythonCopy code
 # math_functions.py
 def is_odd(number):
     return number % 2 != 0
@@ -207,7 +205,6 @@ def is_odd(number):
 If you want to be able to import `is_odd` directly from `fizzbuzz_math` instead of having to import it from `fizzbuzz_math.math_functions`, you can edit the `__init__.py` file as follows:
 
 ```
-pythonCopy code
 # __init__.py
 from .math_functions import is_odd
 ```
@@ -217,7 +214,6 @@ The `.` before `math_functions` indicates a relative import. It means "import `i
 Now, when you do:
 
 ```
-pythonCopy code
 from fizzbuzz_math import is_odd
 ```
 
